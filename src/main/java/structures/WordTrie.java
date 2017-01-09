@@ -9,10 +9,12 @@ import java.util.Scanner;
 
 /**
  * Created by broniowj on 2017-01-06.
+ * <p/>
+ * https://www.hackerrank.com/challenges/ctci-contacts
  */
 class WordNode {
 	Character c;
-	List<WordNode> children = new ArrayList<WordNode>();
+	List<WordNode> children = new ArrayList<>();
 	boolean isWord = false;
 
 	WordNode(Character c) {
@@ -22,6 +24,7 @@ class WordNode {
 
 public class WordTrie {
 	WordNode root = new WordNode(null);
+	int findCounter = 0;
 
 	public static void main(String[] args) throws IOException {
 		WordTrie wordTrie = new WordTrie();
@@ -30,7 +33,7 @@ public class WordTrie {
 
 		Scanner in = new Scanner(System.in);
 		int n = in.nextInt();
-		for(int a0 = 0; a0 < n; a0++){
+		for (int a0 = 0; a0 < n; a0++) {
 			String op = in.next();
 			String contact = in.next();
 
@@ -58,8 +61,6 @@ public class WordTrie {
 			if (i == contact.length() - 1) node.isWord = true;
 		}
 	}
-
-	int findCounter = 0;
 
 	int find(String contact) {
 		WordNode node = root;

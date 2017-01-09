@@ -9,6 +9,8 @@ import java.io.OutputStreamWriter;
 /**
  * Created by broniowj on 2017-01-05.
  *
+ * https://www.hackerrank.com/challenges/ctci-array-left-rotation
+ *
  * Given an array of n integers and a number d, perform d left rotations on the array.
  * Then print the updated array as a single line of space-separated integers.
  *

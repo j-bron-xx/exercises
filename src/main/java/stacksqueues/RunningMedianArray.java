@@ -1,13 +1,14 @@
 package stacksqueues;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
  * Created by broniowj on 2017-01-08.
+ * <p/>
+ * https://www.hackerrank.com/challenges/ctci-find-the-running-median
  */
-public class RunningMedian {
+public class RunningMedianArray {
 	ArrayList<Integer> list = new ArrayList<>();
 
 	public static void main(String[] args) {
@@ -15,7 +16,7 @@ public class RunningMedian {
 		int n = in.nextInt();
 		int[] a = new int[n];
 		double median;
-		RunningMedian runningMedian = new RunningMedian();
+		RunningMedianArray runningMedian = new RunningMedianArray();
 		for (int a_i = 0; a_i < n; a_i++) {
 			a[a_i] = in.nextInt();
 			median = runningMedian.add(a[a_i]);
@@ -31,7 +32,7 @@ public class RunningMedian {
 		if (size == 1) return list.get(0);
 		if (size % 2 == 1) return list.get((size - 1) / 2);
 
-		return ( (double) list.get((size / 2) - 1) + (double) list.get(size / 2) ) / 2;
+		return ((double) list.get((size / 2) - 1) + (double) list.get(size / 2)) / 2;
 	}
 
 	void updateList(int a) {

@@ -5,6 +5,8 @@ import java.util.Stack;
 
 /**
  * Created by broniowj on 2017-01-07.
+ *
+ * https://www.hackerrank.com/challenges/ctci-balanced-brackets
  */
 public class BalancedBrackets {
 	static Stack<Character> leftBrackets = new Stack<>();

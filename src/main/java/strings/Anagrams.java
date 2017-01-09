@@ -7,6 +7,8 @@ import java.util.Set;
 
 /**
  * Created by broniowj on 2017-01-08.
+ *
+ * https://www.hackerrank.com/challenges/ctci-making-anagrams
  */
 public class Anagrams {
 

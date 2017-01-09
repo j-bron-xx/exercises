@@ -10,11 +10,11 @@ import static org.junit.Assert.assertEquals;
  * Created by broniowj on 2017-01-08.
  */
 @RunWith(JUnit4.class)
-public class RunningMedianTest {
+public class RunningMedianArrayTest {
 
 	@Test
 	public void test() {
-		RunningMedian runningMedian = new RunningMedian();
+		RunningMedianArray runningMedian = new RunningMedianArray();
 		assertEquals(5, runningMedian.add(5), 0.001);
 		assertEquals(3.5, runningMedian.add(2), 0.001);
 		assertEquals(5, runningMedian.add(10), 0.001);

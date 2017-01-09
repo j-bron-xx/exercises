@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 /**
  * Created by broniowj on 2017-01-07.
+ *
+ * https://www.hackerrank.com/challenges/ctci-fibonacci-numbers
  */
 public class FibonacciNumbers {
 
