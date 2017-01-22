@@ -31,7 +31,7 @@ public class PrimalitySimple {
 		int i = 5;
 		//have to check only to sqrt(n)
 		while (i * i <= n) {
-			//all possible primes represented by: 6k +-
+			//all possible primes represented by: 6k +- 1
 			//since starting with i=5, so 6k - 1 = 5, for k=1
 			if (n % i == 0) return false;
 			//6k + 1 = 7, so +2 needed (i=5)
