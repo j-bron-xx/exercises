@@ -6,6 +6,7 @@ import java.util.Scanner;
  * Created by broniowj on 2017-01-22.
  * <p/>
  * https://www.hackerrank.com/challenges/ctci-ice-cream-parlor
+ * todo: two sum solution
  */
 public class BinarySearchIceCream {
 
