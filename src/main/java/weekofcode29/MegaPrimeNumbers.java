@@ -1,7 +1,9 @@
 package weekofcode29;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -18,33 +20,27 @@ public class MegaPrimeNumbers {
 		long last = in.nextLong();
 		long counter = 0;
 
-		boolean[] isMegaPrime = new boolean[(int) (last - first + 1)];
-		for (int i = 0; i < last - first; i++) {
-			isMegaPrime[i] = true;
-		}
+		Map<Long, Integer> isMegaPrimeMap = new HashMap<>();
 
-		int i = 1;
-		for (int n = 1; n <= last - first; n++) {
+		for (long n = first; n <= last; n++) {
 
-			if (isMegaPrime[n]) {
-				if (!(areDigitsPrime(String.valueOf(n + first)) && isPrime(n + first))) {
-					isMegaPrime[n] = false;
+			if (isMegaPrimeMap.getOrDefault(n, 1) == 1) {
+				if (areDigitsPrime(String.valueOf(n)) && isPrime(n)) {
+					isMegaPrimeMap.put(n, 10);
+				} else {
+					isMegaPrimeMap.put(n, 1);
 				}
 
-				for (int j = n*2; j <= last - first; j += n) {
-					isMegaPrime[j] = false;
+				for (long j = n + n; j <= last; j += n) {
+					isMegaPrimeMap.put(j, 1);
 				}
 
 			}
 
-
-//			if (areDigitsPrime(String.valueOf(n)) && isPrime(n)) {
-//				counter++;
-//			}
 		}
 
-		for (Boolean b : isMegaPrime) {
-			if (b) counter++;
+		for (Integer b : isMegaPrimeMap.values()) {
+			if (b == 10) counter++;
 		}
 
 		System.out.println(counter);
