@@ -18,10 +18,33 @@ public class MegaPrimeNumbers {
 		long last = in.nextLong();
 		long counter = 0;
 
-		for (long n = first; n <= last; n++) {
-			if (areDigitsPrime(String.valueOf(n)) && isPrime(n)) {
-				counter++;
+		boolean[] isMegaPrime = new boolean[(int) (last - first + 1)];
+		for (int i = 0; i < last - first; i++) {
+			isMegaPrime[i] = true;
+		}
+
+		int i = 1;
+		for (int n = 1; n <= last - first; n++) {
+
+			if (isMegaPrime[n]) {
+				if (!(areDigitsPrime(String.valueOf(n + first)) && isPrime(n + first))) {
+					isMegaPrime[n] = false;
+				}
+
+				for (int j = n*2; j <= last - first; j += n) {
+					isMegaPrime[j] = false;
+				}
+
 			}
+
+
+//			if (areDigitsPrime(String.valueOf(n)) && isPrime(n)) {
+//				counter++;
+//			}
+		}
+
+		for (Boolean b : isMegaPrime) {
+			if (b) counter++;
 		}
 
 		System.out.println(counter);
