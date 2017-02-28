@@ -1,10 +1,13 @@
 package weekofcode29;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * Created by broniowj on 2017-02-23.
@@ -12,7 +15,7 @@ import java.util.Scanner;
  * https://www.hackerrank.com/contests/w29/challenges/megaprime-numbers
  */
 public class MegaPrimeNumbers {
-	static List<Character> nonPrimeDigits = Arrays.asList('0', '1', '4', '6', '8', '9');
+	static List<Character> nonPrimeDigits = Arrays.asList('0', '1', '4', '6', '8', '9');//2 3 5 7
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
@@ -20,27 +23,44 @@ public class MegaPrimeNumbers {
 		long last = in.nextLong();
 		long counter = 0;
 
-		Map<Long, Integer> isMegaPrimeMap = new HashMap<>();
+		Set<Long> notPrimes = new HashSet<>();
 
-		for (long n = first; n <= last; n++) {
-
-			if (isMegaPrimeMap.getOrDefault(n, 1) == 1) {
-				if (areDigitsPrime(String.valueOf(n)) && isPrime(n)) {
-					isMegaPrimeMap.put(n, 10);
-				} else {
-					isMegaPrimeMap.put(n, 1);
-				}
-
-				for (long j = n + n; j <= last; j += n) {
-					isMegaPrimeMap.put(j, 1);
+		for (long n = 2; n < first; n++) {
+			if (!notPrimes.contains(n)) {
+				if (isPrime(n)) {
+					for (long j = n + n; j <= last; j += n) {
+						if (j > first)
+							notPrimes.add(j);
+					}
 				}
 
 			}
-
 		}
 
-		for (Integer b : isMegaPrimeMap.values()) {
-			if (b == 10) counter++;
+		List<Long> toSearchIn = new ArrayList<>();
+		for (long i = first; i <= last; i++) {
+			toSearchIn.add(i);
+		}
+		toSearchIn.removeAll(notPrimes);
+
+
+		Map<Long, Integer> isMegaPrimeMap = new HashMap<>();
+		for (Long n : toSearchIn) {
+
+//			if (isMegaPrimeMap.getOrDefault(n, 0) == 0) {
+				if (areDigitsPrime(String.valueOf(n)) && isPrime(n)) //{
+//					isMegaPrimeMap.put(n, 10);
+					counter++;
+//				} else {
+//					isMegaPrimeMap.put(n, 1);
+//				}
+
+//				for (long j = n + n; j <= last; j += n) {
+//					isMegaPrimeMap.put(j, 1);
+//				}
+
+//			}
+
 		}
 
 		System.out.println(counter);
